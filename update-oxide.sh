@@ -26,7 +26,7 @@ done
 
 ### RDS Installation Discovery:
 # Get RustDedicated_data location(s), set RUSTDIR to parent directory of each:
-RUSTDIR=($(sudo find / -type d -name RustDedicated_Data))
+RUSTDIR=($(sudo find / -ignore_readdir_race -type d -name RustDedicated_Data))
 RUSTDIR=($(for i in ${RUSTDIR[@]}; do echo ${i%/*}; done))
 
 # If multiple folders are found, allow user to select which to use:
